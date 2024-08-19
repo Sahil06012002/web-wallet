@@ -3,12 +3,12 @@ import { derivePath } from "ed25519-hd-key";
 import { useState } from "react";
 import nacl from "tweetnacl";
 
-interface prop{
-    seed : Buffer | undefined
+interface prop {
+  seed: Buffer | undefined;
 }
-interface keys{
-    privateKey : Uint8Array,
-    publicKey : string
+interface keys {
+  privateKey: Uint8Array;
+  publicKey: string;
 }
 
 export default function SolWallet(prop : prop){
@@ -47,5 +47,5 @@ export default function SolWallet(prop : prop){
         ))}
 </div>
     </div>
+  );
 }
-
