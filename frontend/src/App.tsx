@@ -21,7 +21,7 @@ function App() {
         Create Seed Phrase
       </button>
       <div>{mnemonic}</div>
-      <div>{seed}</div>
+
       <div className="flex justify-around">
         <Sol seed={seed}></Sol>
         <Eth seed={seed}></Eth>
