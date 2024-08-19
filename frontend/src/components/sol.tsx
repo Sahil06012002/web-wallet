@@ -2,6 +2,7 @@ import { Keypair } from "@solana/web3.js";
 import { derivePath } from "ed25519-hd-key";
 import { useState } from "react";
 import nacl from "tweetnacl";
+import bs58 from "bs58";
 
 interface prop {
   seed: Buffer | undefined;
@@ -35,13 +36,14 @@ export default function SolWallet(prop: prop) {
   }
 
   return (
-    <div className="h100 w-100 border-black">
+    <div className="h-100 w-50 border border-black">
       <button onClick={onClickHandler}>Add Solana Wallet</button>
       <div>
         {keys.map((keyPair, index) => (
           <div key={index}>
+            <input type="text" value={bs58.encode(keyPair.privateKey)} />
             <p>Public Key: {keyPair.publicKey}</p>
-            <p>Private Key: {Array.from(keyPair.privateKey).toString()}</p>
+            {/* <p>Private Key: {Array.from(keyPair.privateKey).toString()}</p> */}
           </div>
         ))}
       </div>
