@@ -9,7 +9,7 @@ function App() {
   const [seed, setSeed] = useState<Buffer>();
 
   async function onClickHandler() {
-    const newMnemonic = await generateMnemonic()
+    const newMnemonic = generateMnemonic()
     const newSeed = mnemonicToSeedSync(newMnemonic)
 
     setMnemonic(newMnemonic);
@@ -17,14 +17,14 @@ function App() {
   }
 
   return <div className='text-center'>
-    <button onClick={onClickHandler}>Create Seed Phrase</button>
+    <button className='my-5' onClick={onClickHandler}>Create Seed Phrase</button>
     <div>
     {mnemonic}
     </div>
     <div>
     {seed}
     </div>
-    <div className='flex'>
+    <div className='flex justify-around'>
     <Sol seed={seed} ></Sol>
     <Eth></Eth>
     </div>
