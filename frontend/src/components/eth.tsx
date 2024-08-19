@@ -45,7 +45,7 @@ export default function EthWallet(prop: prop) {
         {keys.map((keyPair, index) => (
           <div key={index}>
             <p>Public Key: {keyPair.publicKey}</p>
-            <p>Private Key: {Array.from(keyPair.privateKey).toString()}</p>
+            <p>Private Key: {keyPair.privateKey}</p>
           </div>
         ))}
       </div>
