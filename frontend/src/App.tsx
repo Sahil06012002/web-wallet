@@ -21,9 +21,6 @@ function App() {
     <div>
     {mnemonic}
     </div>
-    <div>
-    {seed}
-    </div>
     <div className='flex justify-around'>
     <Sol seed={seed} ></Sol>
     <Eth></Eth>

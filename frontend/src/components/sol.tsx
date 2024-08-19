@@ -39,12 +39,12 @@ export default function SolWallet(prop : prop){
     return <div className="h100 w-100 border-black">
         <button onClick={onClickHandler}>Add Solana Wallet</button>
         <div>
-    {keys.map((keyPair, index) => (
+        {keys.map((keyPair, index) => (
         <div key={index}>
             <p>Public Key: {keyPair.publicKey}</p>
             <p>Private Key: {Array.from(keyPair.privateKey).toString()}</p>
         </div>
-    ))}
+        ))}
 </div>
     </div>
 }
