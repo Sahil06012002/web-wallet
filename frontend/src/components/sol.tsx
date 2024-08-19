@@ -7,8 +7,8 @@ interface prop{
     seed : Buffer | undefined
 }
 interface keys{
-    privateKey : string,
-    publickey : string
+    privateKey : Uint8Array,
+    publicKey : string
 }
 
 export default function SolWallet(prop : prop){
@@ -24,18 +24,28 @@ export default function SolWallet(prop : prop){
         if(prop.seed)
         {
             const derivedSeed = derivePath(path, prop.seed.toString("hex")).key;
-            const privateKey = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
-            const newPublicKey = Keypair.fromSecretKey(privateKey).publicKey.toBase58()
-            keys.
-            setKeys([...keys,(privateKey,publicKey)])
+            const newPrivateKey = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
+            const newPublicKey = Keypair.fromSecretKey(newPrivateKey).publicKey.toBase58()
+            const newKeyPair: keys = {
+                privateKey : newPrivateKey,
+                publicKey : newPublicKey
+            }
+            setKeys(prevKeys => [...prevKeys, newKeyPair]);
             setPublicKey([...publicKey,newPublicKey ])
         }
         
     }
     
-    return <div>
+    return <div className="h100 w-100 border-black">
         <button onClick={onClickHandler}>Add Solana Wallet</button>
-        <div>{publicKey}</div>
+        <div>
+    {keys.map((keyPair, index) => (
+        <div key={index}>
+            <p>Public Key: {keyPair.publicKey}</p>
+            <p>Private Key: {Array.from(keyPair.privateKey).toString()}</p>
+        </div>
+    ))}
+</div>
     </div>
 }
 
