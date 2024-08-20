@@ -53,13 +53,13 @@ export default function EthWallet(prop: prop) {
             <p className="m-2">Public Key: </p>
             <input
               type="text"
-              className="w-5/6 p-2 rounded-lg"
+              className="w-full p-2 rounded-lg"
               value={keyPair.publicKey}
             />
             <p className="m-2">Private Key: </p>
             <input
               type="text"
-              className="w-5/6 p-2 rounded-lg"
+              className="w-full p-2 rounded-lg"
               value={keyPair.privateKey}
             />
           </div>
