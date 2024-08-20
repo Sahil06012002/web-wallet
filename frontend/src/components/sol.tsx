@@ -36,13 +36,29 @@ export default function SolWallet(prop: prop) {
   }
 
   return (
-    <div className="h-100 w-50 border border-black">
-      <button onClick={onClickHandler}>Add Solana Wallet</button>
-      <div>
+    <div className="h-100 w-1/3 bg-slate-200 p-5 rounded-2xl">
+      <button
+        className="my-5 bg-yellow-500 p-3 rounded-xl font-serif text-xl"
+        onClick={onClickHandler}
+      >
+        Generate Solana Wallet
+      </button>
+      <div className="text-left">
         {keys.map((keyPair, index) => (
-          <div key={index}>
-            <input type="text" value={bs58.encode(keyPair.privateKey)} />
-            <p>Public Key: {keyPair.publicKey}</p>
+          <div className="bg-gray-300 p-4 rounded-xl my-2" key={index}>
+            <p className="font-bold">Wallet {index + 1}: </p>
+            <p className="m-2">Public Key: </p>
+            <input
+              type="text"
+              className="w-5/6 p-2 rounded-lg"
+              value={keyPair.publicKey}
+            />
+            <p className="m-2">Private Key: </p>
+            <input
+              type="text"
+              className="w-5/6 p-2 rounded-lg"
+              value={bs58.encode(keyPair.privateKey)}
+            />
             {/* <p>Private Key: {Array.from(keyPair.privateKey).toString()}</p> */}
           </div>
         ))}

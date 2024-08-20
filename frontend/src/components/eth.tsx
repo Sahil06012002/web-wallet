@@ -39,13 +39,29 @@ export default function EthWallet(prop: prop) {
   }
 
   return (
-    <div className="h100 w-100 border-black">
-      <button onClick={onClickHandler}>Add Etherium Wallet</button>
-      <div>
+    <div className="h-100 w-1/3 bg-slate-200 p-5 rounded-2xl">
+      <button
+        className="my-5 bg-yellow-500 p-3 rounded-xl font-serif text-xl"
+        onClick={onClickHandler}
+      >
+        Generate Etherium Wallet
+      </button>
+      <div className="text-left">
         {keys.map((keyPair, index) => (
-          <div key={index}>
-            <p>Public Key: {keyPair.publicKey}</p>
-            <p>Private Key: {keyPair.privateKey}</p>
+          <div className="bg-gray-300 p-4 rounded-xl my-2" key={index}>
+            <p className="font-bold">Wallet {index + 1}: </p>
+            <p className="m-2">Public Key: </p>
+            <input
+              type="text"
+              className="w-5/6 p-2 rounded-lg"
+              value={keyPair.publicKey}
+            />
+            <p className="m-2">Private Key: </p>
+            <input
+              type="text"
+              className="w-5/6 p-2 rounded-lg"
+              value={keyPair.privateKey}
+            />
           </div>
         ))}
       </div>
