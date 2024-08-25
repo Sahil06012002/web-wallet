@@ -2,6 +2,7 @@
 // import { derivePath } from "ed25519-hd-key";
 import { useState } from "react";
 import { Wallet, HDNodeWallet } from "ethers";
+import Button from "./Buttun";
 
 interface prop {
   seed: Buffer | undefined;
@@ -90,12 +91,8 @@ export default function EthWallet(prop: prop) {
 
   return (
     <div className="h-100 w-1/3 bg-slate-200 p-5 rounded-2xl">
-      <button
-        className="my-5 bg-yellow-500 p-3 rounded-xl font-serif text-xl"
-        onClick={onClickHandler}
-      >
-        Generate Etherium Wallet
-      </button>
+      <Button onclick= {onClickHandler}> Generate Solana Wallet</Button>
+
       <div className="text-left">
         {keys.map((keyPair, index) => (
           <div className="bg-gray-300 p-4 rounded-xl my-2" key={index}>

@@ -3,6 +3,7 @@ import { derivePath } from "ed25519-hd-key";
 import { useState } from "react";
 import nacl from "tweetnacl";
 import bs58 from "bs58";
+import Button from "./Buttun";
 
 interface prop {
   seed: Buffer | undefined;
@@ -69,7 +70,7 @@ export default function SolWallet(prop: prop) {
       const derivedSeed = derivePath(path, prop.seed.toString("hex")).key;
       const newPrivateKey = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
       const newPublicKey =
-        Keypair.fromSecretKey(newPrivateKey).publicKey.toBase58();
+      Keypair.fromSecretKey(newPrivateKey).publicKey.toBase58();
       setPublicKey([...publicKey, newPublicKey]);
       try {
         const balance = await getBalance(newPublicKey);
@@ -88,12 +89,7 @@ export default function SolWallet(prop: prop) {
 
   return (
     <div className="h-100 w-1/3 bg-slate-200 p-5 rounded-2xl">
-      <button
-        className="my-5 bg-yellow-500 p-3 rounded-xl font-serif text-xl"
-        onClick={onClickHandler}
-      >
-        Generate Solana Wallet
-      </button>
+      <Button onclick= {onClickHandler}> Generate Solana Wallet</Button>
       <div className="text-left">
         {keys.map((keyPair, index) => (
           <div className="bg-gray-300 p-4 rounded-xl my-2" key={index}>
