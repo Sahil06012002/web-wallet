@@ -3,6 +3,7 @@ import { generateMnemonic, mnemonicToSeedSync } from "bip39";
 import Sol from "./components/sol";
 import Eth from "./components/eth";
 import { useState } from "react";
+import Button from "./components/Buttun";
 
 function App() {
   const options = [
@@ -26,7 +27,7 @@ function App() {
       <div className="text-5xl font-bold mb-4">
         Multi Chain Wallet
       </div>
-      <p className="border-b mb-2">A wallet to create accounts on multiple blockchains</p>
+      <p className="border-b mb-2 font-medium text-m">A wallet to create accounts on multiple blockchains</p>
       </div>
 
 
@@ -36,24 +37,24 @@ function App() {
       >
         Get Mnemonics
       </button>
-      {/* {mnemonic.every((item) => item.trim() != "") ? (
-        <div className="mb-5 bg-white rounded-lg p-2">
-          <div className="w-auto mx-10 grid grid-cols-4 gap-4">
+      {mnemonic.every((item) => item.trim() != "") ? (
+        <div className="mb-5 bg-zinc-900 rounded-lg px-2 py-10">
+          <div className="w-auto mx-100 grid grid-cols-4 gap-4">
             {mnemonic.map((word, index) => (
               <p
                 key={index}
-                className="p-4 bg-slate-200 rounded-xl text-sm"
+                className="p-4 bg-slate-200 rounded-md text-sm flex justify-center"
               >
                 {word}
               </p>
             ))}
           </div>
         </div>
-      ) : null} */}
-
-      <div className="flex justify-around">
-        <Sol seed={seed}></Sol>
-        <Eth seed={seed}></Eth>
+      ) : null}
+      <div className="flex justify-center">
+      <Button onclick={()=>{
+        //navigate to the wallet section now
+      }}>Generate Wallet</Button>
       </div>
     </div>
   );
